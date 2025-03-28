@@ -1,0 +1,62 @@
+# Resume Processing Automation
+
+## Overview
+This project automates the extraction and processing of resume data from multiple PDF files. It uses `pdfplumber` to extract text, `pandas` to structure the extracted data, and regular expressions (`re`) for pattern recognition. The processed data is then stored in an Excel file, with clickable links for each resume.
+
+## Features
+- **Bulk Processing:** Handles multiple resumes stored in a specified folder.
+- **Text Extraction:** Extracts text content from PDF resumes using `pdfplumber`.
+- **Data Parsing:** Extracts key details like name, phone number, email, LinkedIn profile, introduction, work experience, and education.
+- **Experience Calculation:** Determines total years of experience based on date ranges in work experience.
+- **Top Institute Check:** Identifies if the candidate graduated from IIT, IIIT, BITS, or NIT.
+- **Hyperlinked Excel Report:** Saves extracted data in an Excel sheet with clickable resume links for quick access.
+
+## Requirements
+Ensure the following Python libraries are installed before running the script:
+
+```sh
+pip install pdfplumber pandas openpyxl xlsxwriter
+```
+
+## File Structure
+```
+resume_project/
+│── script.py (Main script)
+│── Resumes/ (Folder containing all resume PDFs)
+│── resume_with_links.xlsx (Output Excel file)
+```
+
+## Usage
+1. Place all resume PDFs in the `Resumes/` folder.
+2. Update `output_path` and `resume_folder` variables in the script as needed.
+3. Run the script:
+
+```sh
+python script.py
+```
+
+4. The processed data will be saved to `resume_with_links.xlsx` with clickable links to resumes.
+
+## Output Fields
+| Field | Description |
+|--------|-------------|
+| File Name | Name of the PDF file |
+| Name | Extracted candidate name |
+| Phone | Extracted phone number |
+| Email | Extracted email address |
+| LinkedIn | Extracted LinkedIn profile URL |
+| Intro | Extracted introduction/summary |
+| Work Experience | Extracted work experience details |
+| Total Experience (Years) | Calculated total experience in years |
+| Education | Extracted education details |
+| Top Institute Graduate | Whether the candidate is from IIT/IIIT/BITS/NIT |
+| Resume Link | Clickable link to open the resume |
+
+## Notes
+- The script assumes resumes are formatted with sections titled "Experience," "Education," etc.
+- Accuracy depends on the formatting and readability of the PDF files.
+- Adjust the `re.search()` patterns if resumes follow different structures.
+
+## Contact
+For any issues or improvements, feel free to contribute or raise an issue in the repository.
+
